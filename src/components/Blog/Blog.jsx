@@ -1,4 +1,5 @@
 import React from "react";
+import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
 const Blog = ({ blog }) => {
@@ -18,10 +19,13 @@ const Blog = ({ blog }) => {
         <p className="w-full">
           {blogBody.length < 400 ? blogBody.length : blogBody.slice(0, 400)}
           <span
-            onClick={() => navigate("/videos")}
-            className="font-bold text-indigo-600"
+            onClick={() => navigate(`/blog/${_id}`)}
+            className="text-2xl font-bold text-indigo-600 flex items-center"
           >
             Read More ..
+            <p>
+              <BsFillArrowRightSquareFill />
+            </p>
           </span>
         </p>
       </div>
