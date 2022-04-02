@@ -2,8 +2,8 @@ import React from "react";
 
 const Videos = () => {
   return (
-    <div>
-      <h2>Videos</h2>
+    <div className="videos-container">
+      <h2 className="text-center text-3xl">Welcome to my Videos</h2>
     </div>
   );
 };
