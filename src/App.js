@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import Navbar from "../src/components/Navbar/Navbar.jsx";
+import Home from "../src/components/Home/Home.jsx";
+import Videos from "../src/components/Videos/Videos.jsx";
+import Login from "../src/components/Login/Login.jsx";
+import BlogDetails from "../src/components/BlogDetails/BlogDetails.jsx";
+import NotFound from "../src//components/NotFound/NotFound";
+
+export const BlogContext = createContext();
 
 function App() {
+  const [blogs, setBlogs] = useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BlogContext.Provider value={[blogs, setBlogs]}>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/videos" element={<Videos></Videos>}></Route>
+        <Route path="/login" element={<Login></Login>}></Route>
+        <Route path="/blog/:id" element={<BlogDetails />}></Route>
+        <Route path="*" element={<NotFound></NotFound>}></Route>
+      </Routes>
+    </BlogContext.Provider>
   );
 }
 
