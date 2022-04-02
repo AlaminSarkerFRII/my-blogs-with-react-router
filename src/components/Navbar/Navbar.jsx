@@ -1,10 +1,17 @@
 import React from "react";
 import logo from "../../assets/logo.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const { pathname } = useLocation();
+
   return (
-    <nav className="flex items-center justify-between px-8 w-full h-20">
+    <nav
+      style={
+        pathname.includes("blog") ? { display: "none" } : { display: "flex" }
+      }
+      className="flex items-center justify-between px-8 w-full h-20"
+    >
       <div>
         <img src={logo} alt="" />
       </div>
